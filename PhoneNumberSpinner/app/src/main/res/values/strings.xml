@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Phone Number Spinner</string>
+    <string name="show">Show</string>
+    <string name="enter_phone">Enter a phone number</string>
+</resources>
