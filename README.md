@@ -1,2 +1,3 @@
 # AAD
-Android Associate Developer
+ This repo is for preparing Android Associate Developer Certification.
+
