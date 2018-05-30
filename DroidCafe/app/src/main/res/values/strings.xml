@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Droid Cafe</string>
+    <string name="action_settings">Settings</string>
+    <string name="intro_text">Droid Deserts</string>
+    <string name="choose_a_desert">Choose a desert</string>
+</resources>
