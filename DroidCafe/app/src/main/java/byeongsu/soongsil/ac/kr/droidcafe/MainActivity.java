@@ -1,5 +1,6 @@
 package byeongsu.soongsil.ac.kr.droidcafe;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
     // 그러나 이런 메서드를 넣을때는 싈질적으로 코드내에서 호출하는 함수 내에 넣는게 좋다고 함.
     public void showFoodOrder(String message){
         displayToast(message);
+        Intent intent = new Intent(this, OrderActivity.class);
+        startActivity(intent);
     }
 
     /**
