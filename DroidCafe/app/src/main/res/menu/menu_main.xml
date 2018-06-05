@@ -2,6 +2,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="byeongsu.soongsil.ac.kr.droidcafe.MainActivity">
+
+    <!-- To show menu item as icons in the app bar, use app:showAsAction Attribute  -->
     <item
         android:id="@+id/action_contact"
         android:orderInCategory="100"
@@ -9,17 +11,21 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/action_order"
+        android:icon="@drawable/ic_order_white"
         android:orderInCategory="10"
         android:title="@string/action_order"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_status"
+        android:icon="@drawable/ic_status_white"
         android:orderInCategory="20"
         android:title="@string/action_status"
-        app:showAsAction="never" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_favorites"
+        android:icon="@drawable/ic_favorites_white"
         android:orderInCategory="40"
         android:title="@string/action_favorites"
-        app:showAsAction="never" />
+        app:showAsAction="ifRoom" />
+
 </menu>

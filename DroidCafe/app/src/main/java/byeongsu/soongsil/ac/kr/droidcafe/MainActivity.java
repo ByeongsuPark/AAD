@@ -1,6 +1,7 @@
 package byeongsu.soongsil.ac.kr.droidcafe;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,10 +25,21 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                displayMap();
             }
         });
+    }
+
+    public void displayMap() {
+
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        // Using the coordinates for Google HQ
+        String data = getString(R.string.google_mtv_coord_zoom12);
+        intent.setData(Uri.parse(data));
+        if( intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -39,34 +51,44 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-       /* if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+
+            case R.id.action_order:
+                displayToast(getString(R.string.action_order_message));
+                return true;
+            case R.id.action_status:
+                displayToast(getString(R.string.action_status_message));
+                return true;
+            case R.id.action_favorites:
+                displayToast(getString(R.string.action_favorites_message));
+                return true;
+            case R.id.action_contact:
+                displayToast(getString(R.string.action_contact_message));
+                return true;
+            default:
+                // Do nothing
         }
-        */
+
         return super.onOptionsItemSelected(item);
     }
 
-    public void displayToast(String message){
+    public void displayToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT)
                 .show();
     }
 
 
     /**
-     *  display a toast message for the food order
-     *  and starts the food order activity
-     * @param message   Message to display
+     * display a toast message for the food order
+     * and starts the food order activity
+     *
+     * @param message Message to display
      */
 
     // 아래의 메서드는 실질적으로 MainActivity파일의 어느 위치에 넣어도 상관은 x
     // 그러나 이런 메서드를 넣을때는 싈질적으로 코드내에서 호출하는 함수 내에 넣는게 좋다고 함.
-    public void showFoodOrder(String message){
+    public void showFoodOrder(String message) {
         displayToast(message);
         Intent intent = new Intent(this, OrderActivity.class);
         startActivity(intent);
@@ -75,21 +97,21 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Show a message that the donut image was clicked
      */
-    public void showDonutOrder(View view){
+    public void showDonutOrder(View view) {
         showFoodOrder(getString(R.string.donut_order_message));
     }
 
     /**
      * Show a message that the ice cream image was clicked
      */
-    public void showIceCreamOrder(View view){
+    public void showIceCreamOrder(View view) {
         showFoodOrder(getString(R.string.ice_cream_order_message));
     }
 
     /**
      * Show a message that the Froyo image was clicked
      */
-    public void showFroyoOrder(View view){
+    public void showFroyoOrder(View view) {
         showFoodOrder(getString(R.string.froyo_order_message));
     }
 }
