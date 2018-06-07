@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         // Using the coordinates for Google HQ
         String data = getString(R.string.google_mtv_coord_zoom12);
         intent.setData(Uri.parse(data));
-        if( intent.resolveActivity(getPackageManager()) != null){
+        if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
     }

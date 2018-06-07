@@ -25,4 +25,5 @@
     <string name="action_contact_message">You selected Contact.</string>
     <string name="snackbar_text">Replace with your own action</string>
     <string name="google_mtv_coord_zoom12">geo:37.422114,-122.086744?z=12</string>
+    <string name="title_activity_order">Order Activity</string>
 </resources>
