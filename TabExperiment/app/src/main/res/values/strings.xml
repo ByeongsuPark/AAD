@@ -9,4 +9,5 @@
     <string name="tab_label1">Top Stories</string>
     <string name="tab_label2">Tech News</string>
     <string name="tab_label3">Cooking</string>
+    <string name="action_title_setting">Settings</string>
 </resources>
