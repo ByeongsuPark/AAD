@@ -19,7 +19,7 @@
     </style>
 
     <style name="MinusButtons" parent="ScoreButton">
-        <item name="android:src">@drawable/ic_minus</item>
+        <item name="android:src">@drawable/ic_button</item>
         <item name="android:contentDescription">@string/minus_button</item>
     </style>
 
