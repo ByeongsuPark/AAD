@@ -57,8 +57,14 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         //Get the data
-        initializeData();
-
+        if( savedInstanceState != null){
+            ArrayList<Sport> temp = (ArrayList<Sport>) savedInstanceState.getSerializable("data");
+            mSportsData.clear();
+            mSportsData.addAll(temp);
+            mAdapter.notifyDataSetChanged();
+        }else {
+            initializeData();
+        }
         // Helper object to deal with swipe to dismiss
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
@@ -85,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         helper.attachToRecyclerView(mRecyclerView);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("data", mSportsData);
     }
 
     /**

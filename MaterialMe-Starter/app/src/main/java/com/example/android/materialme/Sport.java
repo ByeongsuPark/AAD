@@ -16,10 +16,14 @@
 
 package com.example.android.materialme;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
 /**
  * Data model for each row of the RecyclerView.
  */
-class Sport {
+class Sport implements Serializable {
 
     //Member variables representing the title and information about the sport
     private String title;
