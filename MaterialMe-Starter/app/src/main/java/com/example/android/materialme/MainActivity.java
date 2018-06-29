@@ -19,13 +19,11 @@ package com.example.android.materialme;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
-
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /***
@@ -43,11 +41,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // The number of Item per column in RecyclerView
+        int gridColumnCount = getResources().getInteger(R.integer.grid_column_count);
+
         //Initialize the RecyclerView
-        mRecyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
         //Set the Layout Manager
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this, gridColumnCount));
 
         //Initialize the ArrayLIst that will contain the data
         mSportsData = new ArrayList<>();
@@ -57,18 +58,29 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
         //Get the data
-        if( savedInstanceState != null){
+        if (savedInstanceState != null) {
             ArrayList<Sport> temp = (ArrayList<Sport>) savedInstanceState.getSerializable("data");
             mSportsData.clear();
             mSportsData.addAll(temp);
             mAdapter.notifyDataSetChanged();
-        }else {
+        } else {
             initializeData();
         }
+
+        // Set the swipe direction
+        int swipeDirs;
+        if (gridColumnCount > 1) {
+            swipeDirs = 0; // Disable swipe when the orientation become landscape
+        } else {
+            swipeDirs = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+        }
+
+
         // Helper object to deal with swipe to dismiss
         ItemTouchHelper helper = new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(
                 ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT |
-                ItemTouchHelper.DOWN | ItemTouchHelper.UP , ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+                        ItemTouchHelper.DOWN | ItemTouchHelper.UP, swipeDirs
+        ) {
             @Override
             public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 
@@ -112,15 +124,15 @@ public class MainActivity extends AppCompatActivity {
         mSportsData.clear();
 
         //Create the ArrayList of Sports objects with the titles and information about each sport
-        for(int i=0;i<sportsList.length;i++){
-            mSportsData.add(new Sport(sportsList[i],sportsInfo[i],
+        for (int i = 0; i < sportsList.length; i++) {
+            mSportsData.add(new Sport(sportsList[i], sportsInfo[i],
                     sportsImageResources.getResourceId(i, 0)));
         }
 
         // Recycle TypedArray, to be re-used by a later caller.
         sportsImageResources.recycle();
 
-        //Notify the adapter of the change
+        // Notify the adapter of the change
         mAdapter.notifyDataSetChanged();
     }
 

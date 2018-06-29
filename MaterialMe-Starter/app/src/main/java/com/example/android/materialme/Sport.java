@@ -30,13 +30,13 @@ class Sport implements Serializable {
     private String info;
     private final int imageResource;
 
-    /**
-     * Constructor for the Sport data model
-     * @param title The name if the sport.
-     * @param info Information about the sport.
-     * @param imageResource drawable resource of the sport.
-     */
-    Sport(String title, String info, int imageResource) {
+        /**
+         * Constructor for the Sport data model
+         * @param title The name of the sport.
+         * @param info Information about the sport.
+         * @param imageResource drawable resource of the sport.
+         */
+        Sport(String title, String info, int imageResource) {
         this.title = title;
         this.info = info;
         this.imageResource = imageResource;

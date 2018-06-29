@@ -23,4 +23,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="sportsTitle" parent="TextAppearance.AppCompat.Headline">
+    </style>
+    <style name="sportsDetailText" parent="TextAppearance.AppCompat.Subhead">
+    </style>
+    <style name="sportsDetailTitle" parent="TextAppearance.AppCompat.Headline">
+    </style>
 </resources>
