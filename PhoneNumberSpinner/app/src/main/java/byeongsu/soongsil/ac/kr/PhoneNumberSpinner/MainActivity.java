@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         if (spinner != null) {
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(this);
+            spinner.setSelection(0);
         }
 
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         TextView mPhoneLabel = (TextView) findViewById(R.id.text_phonelabel);
         if (editText != null) {
             String showString = editText.getText().toString() + " - " + mSpinnerLabel;
-            mPhoneLabel.setText(editText.getText().toString());
+            mPhoneLabel.setText(editText.getText().toString() + " - " + mSpinnerLabel);
             Toast.makeText(this, showString, Toast.LENGTH_SHORT).show();
         }
     }
