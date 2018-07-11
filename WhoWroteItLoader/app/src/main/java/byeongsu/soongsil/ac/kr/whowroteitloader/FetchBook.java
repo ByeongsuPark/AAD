@@ -59,8 +59,14 @@ public class FetchBook extends AsyncTask<String, Void, String> {
                 }
             }
 
+            // When there is no match result, update the TextViews
+            mTitleText.setText("No Results Found");
+            mAuthorText.setText("");
 
-        } catch (JSONException e) {
+
+        } catch (Exception e) {
+            mTitleText.setText("No Results Found");
+            mAuthorText.setText("");
             e.printStackTrace();
         }
 
