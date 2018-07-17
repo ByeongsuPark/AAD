@@ -4,4 +4,5 @@
         a book name, or just some text from a book to find</string>
     <string name="input_hint">Enter a Book Title</string>
     <string name="button_text">Search Books</string>
+    <string name="loading_text">Loading...</string>
 </resources>

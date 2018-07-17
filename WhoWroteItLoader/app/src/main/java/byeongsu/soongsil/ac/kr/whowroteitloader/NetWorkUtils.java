@@ -1,6 +1,5 @@
 package byeongsu.soongsil.ac.kr.whowroteitloader;
 
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.util.Log;
 
@@ -19,7 +18,7 @@ public class NetWorkUtils {
 
     private static final String LOG_TAG = NetWorkUtils.class.getSimpleName();
     private static final String BOOK_BASE_URL = "https://www.googleapis.com/books/v1/volumes?";
-    private static final String QUERY_PARM = "q"; // Parameter for the search string
+    private static final String QUERY_PARAM = "q"; // Parameter for the search string
     private static final String MAX_RESULTS = "maxResults"; // Parameter to limit the number of results
     private static final String PRINT_TYPE = "printType"; // Parameter to filter by print type
 
@@ -34,7 +33,7 @@ public class NetWorkUtils {
 
             // Build up query URI, limiting results to 10 items and printed books
             Uri builtURI = Uri.parse(BOOK_BASE_URL).buildUpon()
-                    .appendQueryParameter(QUERY_PARM, queryString)
+                    .appendQueryParameter(QUERY_PARAM, queryString)
                     .appendQueryParameter(MAX_RESULTS, "10")
                     .appendQueryParameter(PRINT_TYPE, "books")
                     .build();
@@ -61,7 +60,7 @@ public class NetWorkUtils {
                 // Since it's JSON, adding a newline isn't necessary
                 // it won't affect parsing
                 // but it does make debugging a *lot* easier
-                // if you print out the copleted buffer for debugging
+                // if you print out the completed buffer for debugging
                 buffer.append(line + "\n");
             }
             if (buffer.length() == 0) {
